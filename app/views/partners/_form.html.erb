@@ -1,0 +1,69 @@
+<%= form_for(@partner) do |f| %>
+  <% if @partner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@partner.errors.count, "error") %> prohibited this partner from being saved:</h2>
+
+      <ul>
+      <% @partner.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :legal_name %><br>
+    <%= f.text_field :legal_name %>
+  </div>
+  <div class="field">
+    <%= f.label :legal_address %><br>
+    <%= f.text_field :legal_address %>
+  </div>
+  <div class="field">
+    <%= f.label :inn %><br>
+    <%= f.text_field :inn %>
+  </div>
+  <div class="field">
+    <%= f.label :kpp %><br>
+    <%= f.text_field :kpp %>
+  </div>
+  <div class="field">
+    <%= f.label :account %><br>
+    <%= f.text_field :account %>
+  </div>
+  <div class="field">
+    <%= f.label :bank %><br>
+    <%= f.text_field :bank %>
+  </div>
+  <div class="field">
+    <%= f.label :bik %><br>
+    <%= f.text_field :bik %>
+  </div>
+  <div class="field">
+    <%= f.label :bank_account %><br>
+    <%= f.text_field :bank_account %>
+  </div>
+  <div class="field">
+    <%= f.label :ceo_title %><br>
+    <%= f.text_field :ceo_title %>
+  </div>
+  <div class="field">
+    <%= f.label :ceo_name %><br>
+    <%= f.text_field :ceo_name %>
+  </div>
+  <div class="field">
+    <%= f.label :contract_number %><br>
+    <%= f.text_field :contract_number %>
+  </div>
+  <div class="field">
+    <%= f.label :contract_date %><br>
+    <%= f.date_select :contract_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

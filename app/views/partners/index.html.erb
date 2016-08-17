@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Partners</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Legal name</th>
+      <th>Legal address</th>
+      <th>Inn</th>
+      <th>Kpp</th>
+      <th>Account</th>
+      <th>Bank</th>
+      <th>Bik</th>
+      <th>Bank account</th>
+      <th>Ceo title</th>
+      <th>Ceo name</th>
+      <th>Contract number</th>
+      <th>Contract date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @partners.each do |partner| %>
+      <tr>
+        <td><%= partner.name %></td>
+        <td><%= partner.legal_name %></td>
+        <td><%= partner.legal_address %></td>
+        <td><%= partner.inn %></td>
+        <td><%= partner.kpp %></td>
+        <td><%= partner.account %></td>
+        <td><%= partner.bank %></td>
+        <td><%= partner.bik %></td>
+        <td><%= partner.bank_account %></td>
+        <td><%= partner.ceo_title %></td>
+        <td><%= partner.ceo_name %></td>
+        <td><%= partner.contract_number %></td>
+        <td><%= partner.contract_date %></td>
+        <td><%= link_to 'Show', partner %></td>
+        <td><%= link_to 'Edit', edit_partner_path(partner) %></td>
+        <td><%= link_to 'Destroy', partner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Partner', new_partner_path %>
