@@ -31,6 +31,19 @@ a {
   }
 }
 
+a.btn-primary, a.btn-danger, a.btn-success {
+  font-weight: bold;
+  color: #FFF;
+  
+  &:visited {
+    color: #FFF;
+  }
+  
+  &:hover {
+    color: #FFF;
+  }
+}
+
 div {
   &.field, &.actions {
     margin-bottom: 10px;

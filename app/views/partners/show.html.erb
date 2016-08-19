@@ -1,82 +1,117 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @partner.name %>
-</p>
+  <%= link_to '< Назад', partners_path, class: "btn btn-default btn-sm" %>
 
-<p>
-  <strong>Legal name:</strong>
-  <%= @partner.legal_name %>
-</p>
+<div class="page-header">
+  <h1><%= @partner.name %><small> Карточка партнера</small></h1>
+</div>
 
-<p>
-  <strong>Legal address:</strong>
-  <%= @partner.legal_address %>
-</p>
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">
+        <h3 class="panel-title">Информация о компании</h3>
+      </div>
+    
+      <!-- Table -->
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><strong>Юридическое лицо:</strong></td>
+            <td><%= @partner.name %></td>
+          </tr>
+          <tr>
+            <td><strong>Юридический адрес:</strong></td>
+            <td><%= @partner.legal_address %></td>
+          </tr>
+          <tr>
+            <td><strong>ИНН:</strong></td>
+            <td><%= @partner.inn %></td>
+          </tr>
+          <tr>
+            <td><strong>КПП:</strong></td>
+            <td><%= @partner.kpp %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">
+        <h3 class="panel-title">Банковские реквизиты</h3>
+      </div>
+    
+      <!-- Table -->
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><strong>Расчетный счет:</strong></td>
+            <td><%= @partner.account %></td>
+          </tr>
+          <tr>
+            <td><strong>Наименование банка:</strong></td>
+            <td><%= @partner.bank %></td>
+          </tr>
+          <tr>
+            <td><strong>БИК:</strong></td>
+            <td><%= @partner.bik %></td>
+          </tr>
+          <tr>
+            <td><strong>Корреспондентский счет:</strong></td>
+            <td><%= @partner.bank_account %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">
+        <h3 class="panel-title">Данные договора</h3>
+      </div>
+    
+      <!-- Table -->
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><strong>Номер договора:</strong></td>
+            <td><%= @partner.contract_number %></td>
+          </tr>
+          <tr>
+            <td><strong>Дата заключения:</strong></td>
+            <td><%= @partner.contract_date %></td>
+          </tr>
+          <tr>
+            <td><strong>Должность:</strong></td>
+            <td><%= @partner.ceo_title %></td>
+          </tr>
+          <tr>
+            <td><strong>Фамилия И.О.:</strong></td>
+            <td><%= @partner.ceo_name %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Inn:</strong>
-  <%= @partner.inn %>
-</p>
-
-<p>
-  <strong>Kpp:</strong>
-  <%= @partner.kpp %>
-</p>
-
-<p>
-  <strong>Account:</strong>
-  <%= @partner.account %>
-</p>
-
-<p>
-  <strong>Bank:</strong>
-  <%= @partner.bank %>
-</p>
-
-<p>
-  <strong>Bik:</strong>
-  <%= @partner.bik %>
-</p>
-
-<p>
-  <strong>Bank account:</strong>
-  <%= @partner.bank_account %>
-</p>
-
-<p>
-  <strong>Ceo title:</strong>
-  <%= @partner.ceo_title %>
-</p>
-
-<p>
-  <strong>Ceo name:</strong>
-  <%= @partner.ceo_name %>
-</p>
-
-<p>
-  <strong>Contract number:</strong>
-  <%= @partner.contract_number %>
-</p>
-
-<p>
-  <strong>Contract date:</strong>
-  <%= @partner.contract_date %>
-</p>
-
-<%= render @partner.hotels %>
+<%= link_to ' Редактировать', edit_partner_path(@partner), class: "btn btn-primary btn-sm" %>
 
 
-<h1>Listing Hotels</h1>
 
-<table>
+<h3>Отели партнера "<%= @partner.name %>"</h3>
+
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Address</th>
+      <th>Нзвание отеля</th>
+      <th>Адрес</th>
       <th>Email</th>
-      <th>Phone</th>
+      <th>Телефон</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -88,17 +123,28 @@
         <td><%= hotel.address %></td>
         <td><%= hotel.email %></td>
         <td><%= hotel.phone %></td>
-        <td><%= link_to 'Show', hotel %></td>
-        <td><%= link_to 'Edit', edit_partner_hotel_path(@partner, hotel) %></td>
-        <td><%= link_to 'Destroy', hotel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          
+          <div class="btn-group btn-group-sm" role="group" aria-label="...">
+              <%= link_to 'Цены', partner_hotel_path(@partner, hotel), class: "btn btn-success" %>
+              <%= link_to 'Просмотр', edit_partner_hotel_path(@partner, hotel), class: "btn btn-primary" %>
+              <%= link_to 'Удалить', hotel, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+          </div>
+          
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
+  <%= link_to '+ Добавить отель', new_partner_hotel_path(@partner), class: "btn btn-success btn-sm" %>
+  
+  
+  <%= link_to 'Удалить', @partner, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
 
-<h3>Add Hotel</h3>
-<%= render 'hotels/form' %>
 
-<%= link_to 'Edit', edit_partner_path(@partner) %> |
-<%= link_to 'Back', partners_path %>
+
+<br/>
+<br/>
+<br/>
+

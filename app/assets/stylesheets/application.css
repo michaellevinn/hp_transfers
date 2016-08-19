@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+ 
+#wh {
+    color: #FFFFFF;
+}
+
+.a {
+    color: #FFFFFF;
+}
+
+.a:visited {
+    color: #FFFFFF;
+}

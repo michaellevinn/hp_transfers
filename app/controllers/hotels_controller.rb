@@ -1,5 +1,5 @@
 class HotelsController < ApplicationController
-  before_action :set_hotel, only: [:show, :edit, :update, :destroy]
+  before_action :set_hotel, only: [:show, :edit, :update, :destroy ]
 
   # GET /hotels
   # GET /hotels.json
@@ -63,7 +63,7 @@ class HotelsController < ApplicationController
   def destroy
     @hotel.destroy
     respond_to do |format|
-      format.html { redirect_to partner_path(@partner), notice: 'Hotel was successfully destroyed.' }
+      format.html { redirect_to partners_path, notice: 'Hotel was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -73,6 +73,7 @@ class HotelsController < ApplicationController
     def set_hotel
       @hotel = Hotel.find(params[:id])
     end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hotel_params

@@ -20,10 +20,5 @@
   <%= @hotel.phone %>
 </p>
 
-<p>
-  <strong>Partner:</strong>
-  <%= @hotel.partner %>
-</p>
-
 <%= link_to 'Edit', edit_hotel_path(@hotel) %> |
-<%= link_to 'Back', hotels_path %>
+<%= link_to 'Back', partner_path(@hotel.partner) %>
